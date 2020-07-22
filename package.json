@@ -1,0 +1,28 @@
+{
+  "name": "teamsauth",
+  "version": "0.0.1",
+  "description": "Auth library for teams",
+  "main": ".\\out\\teamsauth.min.js",
+  "files": [
+    "/out"
+  ],
+  "scripts": {
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://mseng@dev.azure.com/mseng/VSIoT/_git/TeamsDev.SDKDemo"
+  },
+  "author": "Microsoft",
+  "license": "MIT",
+  "dependencies": {
+    "@microsoft/teams-js": "^1.6.0"
+  },
+  "devDependencies": {
+    "@types/jquery": "^3.5.0",
+    "@types/node": "^13.13.14",
+    "ts-loader": "^5.2.1",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2"
+  }
+}
