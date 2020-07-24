@@ -1,9 +1,9 @@
 const path = require('path');
-const libraryName = 'teamsauth';
+const libraryName = 'teamscloud';
 
 module.exports = {
   entry: {
-    'teamsauth.min': './src/index.ts',
+    'teamscloud.min': './src/index.ts',
   },
   output: {
     filename: '[name].js',

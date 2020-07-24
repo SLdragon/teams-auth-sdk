@@ -1,13 +1,15 @@
+import * as axios from 'axios';
+
 export class Auth {
     private constructor() {
     }
 
-    public static async login(url: string): Promise<any> {
+    public static async getGraphAccessToken(url: string): Promise<any> {
         let microsoftTeams = require('@microsoft/teams-js');
         return new Promise((resolve, reject) => {
             microsoftTeams.initialize(() => {
                 microsoftTeams.authentication.authenticate({
-                    url: url,
+                    url: window.location.origin + "/simple-start",
                     width: 600,
                     height: 535,
                     successCallback: function (result: string) {
@@ -26,19 +28,17 @@ export class Auth {
     }
 
     public static async getUserProfile(accessToken: string) {
-        return new Promise((resolve, reject) => {
-            $.ajax({
-                url: "https://graph.microsoft.com/v1.0/me/",
-                beforeSend: function (request: any) {
-                    request.setRequestHeader("Authorization", "Bearer " + accessToken);
-                },
-                success: function (profile: any) {
-                    resolve(profile);
-                },
-                error: function (xhr: any, textStatus: string, errorThrown: any) {
-                    reject("textStatus: " + textStatus + ", errorThrown:" + errorThrown);
-                },
+        return new Promise(async (resolve, reject) => {
+            let headers: { [key: string]: string } = {
+                Authorization: "Bearer " + accessToken,
+            };
+
+            var _axios: axios.AxiosInstance = axios.default.create({
+                headers: headers
             });
+
+            var response = await _axios.get("https://graph.microsoft.com/v1.0/me/")
+            resolve(response.data);
         });
     }
 
