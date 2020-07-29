@@ -8,16 +8,20 @@ Run `npm run build` to build the library
 
 ## Usage
 ```
-// Reference from html 
-<script src="./teamsauth.min.js" ></script>
+// Initialize the auth class
+await teamscloud.Auth.init();
 
-// login
-var tokenResult = await teamsauth.Auth.login(url);
+// Get basic user info from SSO token
+var userInfo = teamscloud.Auth.getUserInfo();
 
-// get user profile
-var profile = await teamsauth.Auth.getUserProfile(tokenResult.accessToken);
+// Get graph client
+var tokenResult = await teamscloud.Auth.getGraphAccessToken();
+var graphClient = await teamscloud.Auth.getMicrosoftGraphClient(tokenResult.accessToken);
 
-// parse JWT token
-var token = teamsauth.Auth.parseJwt(idToken)
+// The above two lines can be simplified as below:
+// var graphClient = await teamscloud.Auth.getMicrosoftGraphClient();
 
+// Call graph api
+var profile = await graphClient.api("/me").get();
+var photoBlob = await graphClient.api("/me/photos('120x120')/$value").get();
 ```
