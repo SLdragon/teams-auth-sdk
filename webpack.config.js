@@ -13,6 +13,7 @@ module.exports = {
     umdNamedDefine: true,
     globalObject: 'this'
   },
+  mode:"development",
   devtool: 'source-map',
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
@@ -27,7 +28,7 @@ module.exports = {
     ],
   },
   optimization: {
-    minimize: true,
+    minimize: false,
     /*
     minimizer: [
       new UglifyJsPlugin({

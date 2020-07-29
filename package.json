@@ -16,8 +16,8 @@
   "author": "Microsoft",
   "license": "MIT",
   "dependencies": {
-    "@microsoft/teams-js": "^1.6.0",
-    "axios": "^0.19.2"
+    "@microsoft/microsoft-graph-client": "^2.0.0",
+    "@microsoft/teams-js": "^1.6.0"
   },
   "devDependencies": {
     "@types/node": "^13.13.14",
