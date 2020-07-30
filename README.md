@@ -1,4 +1,4 @@
-# Teams authetication library
+# Teams authentication library
 
 ## Notice:
 This SDK is for the authentication in the teams
@@ -24,4 +24,7 @@ var graphClient = await teamscloud.Auth.getMicrosoftGraphClient(tokenResult.acce
 // Call graph api
 var profile = await graphClient.api("/me").get();
 var photoBlob = await graphClient.api("/me/photos('120x120')/$value").get();
+
+// Use utils api
+var token = teamscloud.Utils.parseJwt(idToken);
 ```
